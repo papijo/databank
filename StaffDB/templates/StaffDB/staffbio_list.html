@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h1 class="m-0 font-weight-bold text-center">List of Staff in the Department </h1>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th class="h4 font-weight-bold">Surname</th>
+                        <th class="h4 font-weight-bold">First Name</th>
+                        <th class="h4 font-weight-bold">Other Name</th>
+                        <th class="h4 font-weight-bold">Staff ID</th>
+                        <th class="h4 font-weight-bold">Division</th>
+                        
+                    </tr>
+                  </thead>
+                  <tfoot>
+                  
+                    <tr>
+                        <th class="h4 font-weight-bold">Surname</th>
+                        <th class="h4 font-weight-bold">First Name</th>
+                        <th class="h4 font-weight-bold">Other Name</th>
+                        <th class="h4 font-weight-bold">Staff ID</th>
+                        <th class="h4 font-weight-bold">Division</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                  {% if staff %}
+                        {%for s in staff%}
+                    
+                    <tr>
+                      <td class="h4"><a href = "{{s.get_absolute_url}}"> {{s.surname}} </a></td>
+                      <td class="h4"><a href = "{{s.get_absolute_url}}"> {{s.firstname}} </a></td>
+                      <td class="h4"><a href = "{{s.get_absolute_url}}"> {{s.othernames}} </a></td>
+                      <td class="h4"> {{s.staffId}} </td>
+                      <td class="h4"> {{s.division}} </td>
+                      
+                      
+                    </tr>
+                    {%endfor%}
+                      {%endif%}
+                    
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+  <h1 class="text-center">Create Staff Information</h1>
+
+<div class="container-fluid">
+  <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h3>Bio</h3>
+    <div class="form-row">
+    
+      <div class="form-group col-md-3 mb-0">
+        {{ form.surname|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0"> 
+        {{ form.firstname|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">  
+        {{ form.othernames|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.DOB|as_crispy_field }}
+      </div>
+    </div>   
+    
+    <h3>Official Information</h3>
+    <div class="form-row">
+      
+      <div class="form-group col-md-3 mb-0">
+        {{ form.staffId|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-3 mb-0">
+        {{ form.designation|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-3 mb-0">
+        {{ form.division|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-3 mb-0">  
+        {{ form.DOE|as_crispy_field }}
+      </div>
+    
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 mb-0">
+        {{ form.status|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-3 mb-0">
+        {{ form.leave_Start|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-3 mb-0">
+        {{ form.leave_End|as_crispy_field }}
+      </div>
+    
+    </div>
+        
+        
+      
+    
+    <h3>Contact Information</h3>
+    <div class="form-row">
+      
+      <div class="form-group col-md-4 mb-0">
+      {{ form.email|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-4 mb-0">
+      {{ form.email_official|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-4 mb-0">
+      {{ form.mobile_phone|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 mb-0">
+        {{ form.address|as_crispy_field }}
+        </div>
+    </div>
+
+    <h3>Educational Background</h3>
+    <div class="form-row">
+      <div class="form-group col-md-3 mb-0" >
+        {{ form.diploma|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.bachelors_degree|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.masters_degree|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-3 mb-0">
+        {{ form.doctorate_degree|as_crispy_field }}
+      </div>
+    </div> 
+
+
+    <h3>Career Development</h3>
+      <div class="form-row">
+        <div class="form-group col-md-6 mb-0">
+          {{ form.certification|as_crispy_field }}
+        </div>
+
+        <div class="form-group col-md-6 mb-0">
+          {{ form.trainings_attended|as_crispy_field }}
+        </div>
+      </div>
+    
+    
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        {{ form.favQuote|as_crispy_field }}
+        {{ form.image|as_crispy_field }}
+      </div>
+    </div>
+    
+  
+    <button value="Submit" type="submit" class="btn btn-primary">Save</button>
+  </form>
+
+</div>
+
+  <!-- <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form> -->
+
+{% endblock %}

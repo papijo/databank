@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+ 
+
+
+ 
+ <div class = 'container-fluid'>
+    <form method="get">
+    <div class="well">
+      <h4 class="text-center"  style="margin-top: 0">Special Intervention Program Trainee Filter</h4>
+      <div class="row">
+        <div class="form-group col-sm-3 col-md-3">
+          {{ filter.form.first_name.label_tag }}
+          {% render_field filter.form.first_name class="form-control" %}
+        </div>
+        <div class="form-group col-sm-3 col-md-3">
+          {{ filter.form.last_name.label_tag }}
+          {% render_field filter.form.last_name class="form-control" %}
+        </div>
+        <div class="form-group col-sm-3 col-md-3">
+          {{ filter.form.state.label_tag }}
+          {% render_field filter.form.state class="form-control" %}
+        </div>
+        <div class="form-group col-sm-3 col-md-3">
+          {{ filter.form.special_Intervention_Program.label_tag }}
+          {% render_field filter.form.special_Intervention_Program class="form-control" %}
+        </div>
+        
+        
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-3 col-md-3">
+          {{ filter.form.date_of_Program.label_tag }}
+          {% render_field filter.form.date_of_Program class="form-control" %}
+        </div>
+        
+        
+        
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </button>
+    </div>
+  </form>
+ </div>
+ <br/>
+
+ <div class="container-fluid">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Surname</th>
+        <th>Other Names</th>
+        <th>Program</th>
+        <th>State</th>
+        <th>Trade Area</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for trainee in filter.qs %}
+        <tr>
+          <td> <a href = '{{trainee.get_absolute_url}}'> {{ trainee.first_name }} </a> </td>
+          <td>{{ trainee.last_name }}</td>
+          <td>{{ trainee.other_names }}</td>
+          <td>{{ trainee.special_Intervention_Program }}</td>
+          <td>{{ trainee.state }}</td>
+          <td>{{ trainee.trade_Area }}</td>
+          <td>{{ trainee.date_of_Program.year }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="container-fluid">
+  <h3>
+    Your search has returned {{trainee_filter_count}} trainees.
+  </h3>
+</div>
+
+
+  
+{% endblock %}

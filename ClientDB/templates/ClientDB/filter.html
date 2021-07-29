@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+{% load widget_tweaks %}
+ 
+ 
+ <div class = 'container-fluid'>
+    <form method="get">
+    <div class="well">
+      <h4 style="margin-top: 0">Client Filter</h4>
+      <div class="row">
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.name.label_tag }}
+          {% render_field filter.form.name class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.sector.label_tag }}
+          {% render_field filter.form.sector class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.state.label_tag }}
+          {% render_field filter.form.state class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.area_Office.label_tag }}
+          {% render_field filter.form.area_Office class="form-control" %}
+        </div>
+        
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </button>
+    </div>
+  </form>
+ </div>
+ <br/>
+
+<div class="container-fluid">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Organisation</th>
+        <th>Sector</th>
+        <th>Area Office</th>
+        <th>State</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for organisation in filter.qs %}
+        <tr>
+          <td><a href = '{{organisation.get_absolute_url}} '>{{ organisation.name }}</a> </td>
+          <td>{{ organisation.sector }}</td>
+          <td>{{ organisation.area_Office }}</td>
+          <td>{{ organisation.state }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+  <div class="container-fluid">
+    <h3>
+      Your search has returned {{client_organisation_filter_count}} organisations.
+    </h3>
+  </div>
+
+{% endblock %}

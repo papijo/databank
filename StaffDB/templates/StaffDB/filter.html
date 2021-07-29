@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+<div class = 'container-fluid'>
+    <form method="get">
+
+    <div class="well">
+      <h4 class="text-center"  style="margin-top: 0"> Departmental Staff Filter</h4>
+      <div class="row">
+        <div class="form-group col-sm-3 col-md-3">
+          {{ filter.form.firstname.label_tag }}
+          {% render_field filter.form.firstname class="form-control" %}
+        </div>
+        <div class="form-group col-sm-3 col-md-3">
+          {{ filter.form.surname.label_tag }}
+          {% render_field filter.form.surname class="form-control" %}
+        </div>
+        <div class="form-group col-sm-3 col-md-3">
+          {{ filter.form.othernames.label_tag }}
+          {% render_field filter.form.othernames class="form-control" %}
+        </div>
+        <div class="form-group col-sm-3 col-md-3">
+          {{ filter.form.staffId.label_tag }}
+          {% render_field filter.form.staffId class="form-control" %}
+        </div>
+        
+        
+        
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-6 col-md-6">
+          {{ filter.form.designation.label_tag }}
+          {% render_field filter.form.designation class="form-control" %}
+        </div>
+        <div class="form-group col-sm-6 col-md-6">
+          {{ filter.form.division.label_tag }}
+          {% render_field filter.form.division class="form-control" %}
+        </div>
+        
+        
+        
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </button>
+    </div>
+  </form>
+</div>
+
+ <br/>
+
+<div class = 'container-fluid'>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Surname</th>
+        <th>First Name</th>
+        <th>Other Names</th>
+        <th>Staff ID</th>
+        <th>Designation</th>
+        <th>Division</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for staff in filter.qs %}
+        <tr>
+          <td> <a href = '{{staff.get_absolute_url}}'> {{ staff.surname }} </a> </td>
+          <td>{{ staff.firstname }}</td>
+          <td>{{ staff.othernames }}</td>
+          <td>{{ staff.staffId }}</td>
+          <td>{{ staff.designation }}</td>
+          <td>{{ staff.division }}</td>
+          
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="container-fluid">
+  <h3>
+    Your search has returned {{staff_filter_count}} Staff Members.
+  </h3>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{{staffbio.image.url}}" class="img-thumbnail">
+            </div>
+            <div class="col-md-11">
+                <h1 class="display-3 text-center">{{staffbio.surname}} {{staffbio.firstname}}, {{staffbio.othernames}}</h1>              
+            </div>
+        </div>  
+    </div>
+  </div>
+
+  <div class="container-fluid" >
+    <div class="row">
+
+        <!--Bio-->
+        <div class="card-columns " style="column-count: 2;">
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Bio</h3>
+                </div>
+                <div class="card-body">
+                    <p class="staffDetail"><strong>Surname: </strong>{{staffbio.surname}} </p>
+                    <p class="staffDetail"><strong>First Name: </strong>{{staffbio.firstname}} </p>
+                    <p class="staffDetail"><strong>Other Names: </strong>{{staffbio.othernames}} </p>
+                    <p class="staffDetail"><strong>Date of Birth: </strong> {{staffbio.DOB}} </p>
+                    <p class="staffDetail"><strong>Age: </strong> {{staffbio.getAge}} Years Old </p>
+                </div>
+              </div>
+        
+        
+        
+        <!--Official Information-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Official Information</h3>
+                </div>
+                <div class="card-body">
+                    <p class="staffDetail"><strong>Staff ID: </strong> {{staffbio.staffId}} </p>
+                    <p class="staffDetail"><strong>Designation: </strong>{{staffbio.designation}} </p>
+                    <p class="staffDetail"><strong>Division: </strong>{{staffbio.division}} </p>
+                    <p class="staffDetail"><strong>Date of Emploment: </strong> {{staffbio.DOE}} </p>
+                    <p class="staffDetail"><strong>Years of Service: </strong> {{staffbio.getEmplomentDate}} </p>
+                    <p class="staffDetail"><strong>Leave Status: </strong> {{staffbio.status}} </p>
+                    <p class="staffDetail"><strong>Leave Start: </strong> {{staffbio.leave_Start}} </p>
+                    <p class="staffDetail"><strong>Leave End: </strong> {{staffbio.leave_End}} </p>
+                </div>
+              </div>
+        
+        
+
+        <!--Contact Information-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Contact Details</h3>
+                </div>
+                <div class="card-body">
+                  <p class="staffDetail"><strong>Address: </strong> {{staffbio.address}}</p>
+                    <p class="staffDetail"><strong>Official Email: </strong>{{staffbio.email_official}} </p>
+                    <p class="staffDetail"><strong>Email: </strong>{{staffbio.email}} </p>
+                    <p class="staffDetail"><strong>Mobile Phone: </strong>{{staffbio.mobile_phone}}</p>
+                </div>
+              </div>
+        
+        
+
+        <!--Educational Information-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Educational Information</h3>
+                </div>
+                <div class="card-body">
+                    <p class="staffDetail"><strong>Diploma: </strong>{{staffbio.diploma}}</p>
+                    <p class="staffDetail"><strong>First Degree: </strong>{{staffbio.bachelors_degree}}</p>
+                    <p class="staffDetail"><strong>Masters Degree: </strong>{{staffbio.masters_degree}}</p>
+                    <p class="staffDetail"><strong>Doctorate Degree: </strong>{{staffbio.doctorate_degree}}</p>
+                </div>
+              </div>
+        
+
+        <!--Career Development-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Career Development</h3>
+                </div>
+                <div class="card-body">
+                    <p class="staffDetail"><strong>Certifications: </strong>{{staffbio.certification.all|join:", "}}</p>
+                    <p class="staffDetail"><strong>Training Programmes: </strong>{{staffbio.trainings_attended.all|join:", " }}</p>
+                </div>
+              </div>
+
+        </div> <!--End of Card Column-->
+
+    </div> <!--End of Row-->
+
+  </div>
+    
+
+
+{% endblock content %}

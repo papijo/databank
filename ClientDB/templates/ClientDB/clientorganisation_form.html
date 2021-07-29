@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% include "django/forms/widgets/input.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Add Organisation</h1>
+    <p class="lead">Use the form below to add an Organisation's detail to the Fund's databank.</p>
+  </div>
+</div>
+
+  
+
+  <div class="container-fluid">
+    <form method="post" action="" enctype="multipart/form-data" >
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="form-group col-md-6 mb-0">
+          {{ form.name|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6 mb-0">
+          {{ form.CAC_Number|as_crispy_field }}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6 mb-0">
+          {{ form.address|as_crispy_field }}
+        </div>
+
+        <div class="form-group col-md-6 mb-0">
+          {{ form.state|as_crispy_field }}
+        </div>
+
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4 mb-0">
+          {{ form.email|as_crispy_field }}
+        </div>
+
+        <div class="form-group col-md-4 mb-0" >
+          {{ form.date_formed|as_crispy_field }}
+        </div>
+
+        <div class="form-group col-md-4 mb-0">
+          {{ form.staff_Strength|as_crispy_field }}
+        </div>
+
+      </div>
+      
+      
+
+
+      <div class="form-row">
+        <div class="form-group col-md-4 mb-0">
+          {{ form.sector|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.area_of_Specialisation|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.area_Office|as_crispy_field }}
+        </div>
+      </div>
+      {{ form.logo|as_crispy_field }}
+      <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+ 
+{% endblock %}

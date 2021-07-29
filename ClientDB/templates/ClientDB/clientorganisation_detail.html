@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{{clientorganisation.logo.url}}" class="img-thumbnail">
+            </div>
+            <div class="col-md-11">
+                <h1 class="display-3 text-center">{{clientorganisation.name}} Detail Page</h1>              
+            </div>
+        </div>  
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <!-- General Information -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h3 class="m-0 font-weight-bold text-primary">General Infomation</h3>
+        </div>
+        <div class="card-body">
+          <p class="text-uppercase clientDetailText">
+              CAC NUMBER: <kbd>{{clientorganisation.CAC_Number}} </kbd>
+          </p>
+         <p class="text-uppercase clientDetailText">
+            SECTOR:    <kbd>{{clientorganisation.sector}}</kbd>
+        </p>
+        <p class="text-uppercase clientDetailText">
+            AREA OF SPECIALISATTION: <kbd>{{clientorganisation.area_of_Specialisation}}</kbd>               
+        </p>
+        <P class="text-uppercase clientDetailText">
+            STAFF STRENGTH: <kbd>{{clientorganisation.staff_Strength}}</kbd> 
+        </P>
+             
+        <p class="text-uppercase clientDetailText">
+            AREA OFFICE: <kbd>{{clientorganisation.area_Office}}</kbd>
+        </p>
+
+        <p class="text-uppercase clientDetailText"> 
+            DATE FORMED: <kbd>{{clientorganisation.date_formed}}</kbd>
+        </P>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-6">
+
+      <!-- Contact Information -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h3 class="m-0 font-weight-bold text-primary">Contact Infomation</h3>
+        </div>
+        <div class="card-body">
+          <p class="text-uppercase clientDetailText">
+              ADDRESS: <kbd>{{clientorganisation.address}}</kbd>
+          </p>
+
+          <p class="clientDetailText">
+            EMAIL: <kbd>{{clientorganisation.email}}</kbd>
+        </p>
+        <p class="text-uppercase clientDetailText">
+            STATE: <kbd>{{clientorganisation.state}}</kbd>
+        </P>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    {% if user.is_staff %}
+        {% if perms.organisation.can_edit %}
+      
+      <div class="container">
+      <button type="button" class="btn btn-outline-primary"><a href="{% url 'client-organisation_update' clientorganisation.CAC_Number %}">Update {{ clientorganisation }}'s Record</a></button>
+      
+      <button type="button" class="btn btn-outline-primary"><a href="{% url 'client-organisation_delete' clientorganisation.CAC_Number %}">Delete {{ clientorganisation }}'s Record</a></button>
+      
+      </div>
+      
+        {% endif %}
+      {% endif %}
+  </div>
+
+  
+
+
+
+
+
+{% endblock %} 

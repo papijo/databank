@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{{clientorganisation.logo.url}}" class="img-thumbnail">
+            </div>
+            <div class="col-md-11">
+                <h1 class="display-3 text-center">{{trainee.last_name}} {{trainee.first_name}}, {{trainee.other_names}} Detail Page</h1>              
+            </div>
+        </div>  
+    </div>
+  </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+      <!-- General Information -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h3 class="m-0 font-weight-bold text-primary">General Infomation</h3>
+        </div>
+        <div class="card-body">
+          <p class="text-uppercase clientDetailText">
+              SURNAME: <kbd>{{trainee.last_name}} </kbd>
+          </p>
+         <p class="text-uppercase clientDetailText">
+            OTHER NAMES:    <kbd>{{trainee.other_names}}</kbd>
+        </p>
+        <p class="text-uppercase clientDetailText">
+            FIRST NAME: <kbd>{{trainee.first_name}}</kbd>               
+        </p>
+        <p class="text-uppercase clientDetailText">
+            DATE OF BIRTH: <kbd>{{trainee.DOB}}</kbd> 
+        </p>
+
+        <p class="text-uppercase clientDetailText">
+              ADDRESS: <kbd>{{trainee.address}}</kbd>
+          </p>
+
+          <p class="clientDetailText">
+            EMAIL: <kbd>{{trainee.email}}</kbd>
+        </p>
+        <p class="text-uppercase clientDetailText">
+            PHONE: <kbd>{{trainee.mobile_phone}}</kbd>
+        </P>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+
+      <!-- Contact Information -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h3 class="m-0 font-weight-bold text-primary">Training Program Infomation</h3>
+        </div>
+        <div class="card-body">
+          <p class="text-uppercase clientDetailText">
+              PROGRAM: <kbd>{{trainee.special_Intervention_Program}}</kbd>
+          </p>
+
+          <p class="clientDetailText">
+            TRADE AREA: <kbd>{{trainee.trade_Area}}</kbd>
+        </p>
+        <p class="text-uppercase clientDetailText">
+            YEAR: <kbd>{{trainee.date_of_Program.year}}</kbd>
+        </p>
+        <p class="text-uppercase clientDetailText">
+            BANK: <kbd>{{trainee.bank}}</kbd>
+        </p>
+        <p class="text-uppercase clientDetailText">
+            ACCOUNT NUMBER: <kbd>{{trainee.account_Number}}</kbd>
+        </p>
+        <p class="text-uppercase clientDetailText">
+            BVN: <kbd>{{trainee.bvn}}</kbd>
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+
+
+
+{% endblock %} 
