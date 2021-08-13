@@ -8,7 +8,7 @@
 
   <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Add Organisation</h1>
+    <h1 class="display-4">Add Trainee</h1>
     <p class="lead">Use the form below to add a Trainee to the Fund's databank.</p>
   </div>
 </div>
@@ -41,14 +41,10 @@
         </div>
 
       </div>
-
        <div class="form-row">
         <div class="form-group col-md-12 mb-0">
           {{ form.address|as_crispy_field }}
         </div>
-
-        
-
       </div>
 
          
@@ -67,6 +63,9 @@
         </div>
         <div class="form-group col-md-3 mb-0">
           {{ form.date_of_Program|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-3 mb-0">
+          {{ form.centre|as_crispy_field }}
         </div>
       </div>
 

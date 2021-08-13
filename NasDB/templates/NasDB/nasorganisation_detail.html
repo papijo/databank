@@ -14,105 +14,119 @@
 </div> 
 
 
-    <div class="row">
-        <div class="col-lg-6">
-        <!-- General Information -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-            <h3 class="m-0 font-weight-bold text-primary">General Information</h3>
-            </div>
-            <div class="card-body">
-            <p class="text-uppercase clientDetailText">
-                TYPE: <kbd>{{nasorganisation.type}} </kbd>
-            </p>
-            <p class="text-uppercase clientDetailText">
-                SECTOR:    <kbd>{{nasorganisation.sector}}</kbd>
-            </p>
-            <p class="text-uppercase clientDetailText">
-                AREA OF SPECIALISATTION: <kbd>{{nasorganisation.area_of_Specialization}}</kbd>               
-            </p>
-            <P class="text-uppercase clientDetailText">
-                STAFF STRENGTH: <kbd>{{nasorganisation.staff_Strength}}</kbd> 
-            </P>
-            <p class="text-uppercase clientDetailText"> 
-                DATE FORMED: <kbd>{{nasorganisation.YOE}}</kbd>
-            </P>
-            </div>
-        </div>
 
-        </div>
-        <div class="col-lg-6">
+  <div class="container-fluid" >
+    <div class="row">        
+        <div class="card-columns " style="column-count: 2;">
+            
+            
+            <!--General Information-->
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>General Information</h3>
+                </div>
+                <div class="card-body">
+                    <p class="DTS"><strong>ONWERSHIP TYPE: </strong>{{nasorganisation.type}} </p>
+                    <p class="DTS"><strong>SECTOR: </strong>{{nasorganisation.sector}} </p>
+                    <p class="DTS"><strong>AREA OF SPECIALISATTION: </strong>{{nasorganisation.area_of_Specialisation}} </p>
+                    <p class="DTS"><strong>STAFF STRENGTH: </strong> {{nasorganisation.staff_Strength}} </p>
+                    <p class="DTS"><strong>DATE FORMED: </strong> {{nasorganisation.YOE}} </p>
+                </div>
+              </div>
+        
+        
+        
+        <!--Official Information-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Contact Information</h3>
+                </div>
+                <div class="card-body">
+                    <p class="DTS"><strong>ADDRESS: </strong> {{nasorganisation.address}} </p>
+                    <p class="DTS"><strong>CONTACT PERSON: </strong> {{nasorganisation.contact_person}} </p>
+                    <p class="DTS"><strong>PHONE NUMBER: </strong> {{nasorganisation.phone_number}} </p>
+                    <p class="DTS"><strong>EMAIL: </strong>{{nasorganisation.email}} </p>
+                    <p class="DTS"><strong>STATE: </strong>{{nasorganisation.state}} </p>
+                </div>
+              </div>
 
-        <!-- Contact Information -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-            <h3 class="m-0 font-weight-bold text-primary">Contact Information</h3>
-            </div>
-            <div class="card-body">
-            <p class="text-uppercase clientDetailText">
-                ADDRESS: <kbd>{{nasorganisation.address}}</kbd>
-            </p>
+        <!--Apprenticeship Activities-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Apprencticeship Activities</h3>
+                </div>
+                <div class="card-body">
+                    <p class="DTS"><strong>CURRICULUM AVAILABLE: </strong> {{nasorganisation.curriculum_available}} </p>
+                    <p class="DTS"><strong>CURRICULUM TYPE: </strong> {{nasorganisation.curriculum_type}} </p>
+                    <p class="DTS"><strong>TRAINING RECORD AVAILABLE: </strong> {{nasorganisation.training_record_available}} </p>
+                    <p class="DTS"><strong>TRAINING RECORD TYPE: </strong>{{nasorganisation.record_type}} </p>
+                    <p class="DTS"><strong>CERTIFICATION AVAILABLE: </strong>{{nasorganisation.certification_available}} </p>
+                    <p class="DTS"><strong>CERTIFICATION TYPE: </strong>{{nasorganisation.certification_type}} </p>
+                    <p class="DTS"><strong>PROVISIONAL APPROVAL: </strong>{{nasorganisation.provisional_approval}} </p>
+                    <p class="DTS"><strong>DATE OF PROVISIONAL APPROVAL: </strong>{{nasorganisation.DOPA}} </p>
+                </div>
+              </div>
 
-            {% comment %} <p class="clientDetailText">
-                EMAIL: <kbd>{{clientorganisation.email}}</kbd>
-            </p> {% endcomment %}
-            <p class="text-uppercase clientDetailText">
-                STATE: <kbd>{{nasorganisation.state}}</kbd>
-            </P>
-            </div>
-        </div>
-        </div>
+              <!--NAS DB OFFICERS-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Apprencticeship Officers</h3>
+                </div>
+                <div class="card-body">
+                    <p class="DTS"><strong>PROMOTIONAL OFFICER: </strong> {{nasorganisation.promotion_Officer}} </p>
+                    <p class="DTS"><strong>APPRAISAL OFFICER: </strong> {{nasorganisation.appraisal_Officer}} </p>
+                    <p class="DTS"><strong>HARMONISATION OFFICER: </strong> {{nasorganisation.harmonisation_Officer}} </p>
+                    <p class="DTS"><strong>INSTALLATION OFFICER: </strong>{{nasorganisation.installation_Officer}} </p>
+                    <p class="DTS"><strong>SUPERVISION OFFICER: </strong>{{nasorganisation.supervision_Officer}} </p>
+                     <p class="DTS"><strong>MONITORING OFFICER: </strong>{{nasorganisation.monitoring_Officer}} </p>
+                </div>
+              </div>
+            
+            <!--Report Status-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Report Status</h3>
+                </div>
+                <div class="card-body">
+                    <p class="DTS"><strong>PROMOTIONAL REPORT AVAILABLE: </strong> {{nasorganisation.promotional_report_available}} </p>
+                    <p class="DTS"><strong>APPRAISAL REPORT AVAILABLE: </strong> {{nasorganisation.appraisal_report_available}} </p>
+                    <p class="DTS"><strong>HARMONISATION REPORT AVAILABLE: </strong> {{nasorganisation.harmonisation_report_available}} </p>
+                    <p class="DTS"><strong>INSTALLATION REPORT AVAILABLE: </strong> {{nasorganisation.installation_report_available}} </p>
+                    <p class="DTS"><strong>SUPERVISION REPORT AVAILABLE </strong>{{nasorganisation.supervision_report_available}} </p>
+                    <p class="DTS"><strong>MONITORING REPORT AVAILABLE: </strong>{{nasorganisation.monitoring_report_available}} </p>
+                </div>
+              </div>
+
+
+        </div> <!--End of Card Column-->
+    </div> <!--End of Row-->
   </div>
 
-  <div class="row">
-        <div class="col-lg-6">
-        <!-- Apprenticeship Information -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-            <h3 class="m-0 font-weight-bold text-primary">Apprenticeship Information</h3>
-            </div>
-            <div class="card-body">
-            <p class="text-uppercase clientDetailText">
-                STAGE: <kbd>{{nasorganisation.stage}} </kbd>
-            </p>
-            <p class="text-uppercase clientDetailText">
-                PROMOTIONAL OFFICER:    <kbd>{{nasorganisation.promotion_Officer}}</kbd>
-            </p>
-            <p class="text-uppercase clientDetailText">
-                APPRAISAL OFFICER: <kbd>{{nasorganisation.appraisal_Officer}}</kbd>               
-            </p>
-            <P class="text-uppercase clientDetailText">
-                HARMONISATION OFFICER: <kbd>{{nasorganisation.harmonisation_Officer}}</kbd> 
-            </P>
-            <P class="text-uppercase clientDetailText">
-                INSTALLATION OFFICER: <kbd>{{nasorganisation.installation_Officer}}</kbd> 
-            </P>
-            <P class="text-uppercase clientDetailText">
-                SUPERVISION OFFICER: <kbd>{{nasorganisation.supervision_Officer}}</kbd> 
-            </P>
-            <P class="text-uppercase clientDetailText">
-                MONITORING OFFICER: <kbd>{{nasorganisation.monitoring_Officer}}</kbd> 
-            </P>
-            <P class="text-uppercase clientDetailText">
-                PROVISIONAL APPROVAL: <kbd>{{nasorganisation.provisional_approval}}</kbd> 
-            </P>
-            <p class="text-uppercase clientDetailText"> 
-                DATE OF PROVISIONAL APPROVAL: <kbd>{{nasorganisation.DOPA}}</kbd>
-            </P>
-            </div>
-        </div>
 
-        </div>
-     
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
  
         {% if perms.NasDB.change_nasorganisation %}
       
       <div class="container">
-      <button type="button" class="btn btn-outline-primary"><a href="{% url 'nas-organisation_update' nasorganisation.id %}">Update {{ clientorganisation }}'s Record</a></button>
+      <a class='btn btn-outline-secondary' href="{% url 'nas-organisation_update' nasorganisation.id %}">Update {{ nasorganisation }}'s Record</a>
       
-      <button type="button" class="btn btn-outline-primary"><a href="{% url 'nas-organisation_delete' nasorganisation.id %}">Delete {{ clientorganisation }}'s Record</a></button>
+      <a class='btn btn-outline-secondary' href="{% url 'nas-organisation_delete' nasorganisation.id %}">Delete {{ nasorganisation }}'s Record</a>
       
       </div>
       

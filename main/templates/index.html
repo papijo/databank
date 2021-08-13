@@ -10,9 +10,9 @@
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
+        {% comment %} ClientDB {% endcomment %}
 
-
-          
+          {% if perms.ClientDB.view_clientorganisation %}
           <div class="card mb-2">
             <div class="card-body">
                 <h3 class="card-title text-center" >Industrial Training Fund Client Information</h3>
@@ -93,7 +93,10 @@
               </div>
             </div>
           </div>
+          {% endif %}
 
+  {% comment %} NAS DB {% endcomment %}
+{% if perms.NasDB.view_nasorganisation %}
           <div class="card mb-2">
             <div class="card-body">
                 <h3 class="card-title text-center" >National Apprenticeship Scheme Information</h3>
@@ -247,6 +250,11 @@
               </div>
             </div>
           </div> 
+          {% endif %}
+
+          {% comment %} TTA DB {% endcomment %}
+
+{% if perms.TTA.view_trainee %}
           <div class="card mb-2">
             <div class="card-body">
                 <h3 class="card-title text-center" >Special Intervention Programme Trainees Tracking Information</h3>
@@ -325,7 +333,9 @@
               </div>
             </div>
           </div>
+    {% endif %}
 
+    {% if perms.StaffDB.view_staffbio %}
           <div class="card mb-2">
             <div class="card-body">
                 <h3 class="card-title text-center" >TVSTD Staff Information</h3>
@@ -478,6 +488,8 @@
               </div>
             </div>
           </div>
+{% endif %}
+          
 
           <!-- Content Row -->
 

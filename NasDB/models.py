@@ -59,6 +59,9 @@ class Type(models.Model):
 class NasOrganisation(models.Model):
     name =  models.CharField(max_length= 200)
     address = models.TextField(max_length= 200)
+    contact_person = models.CharField(max_length=200, null=True)
+    phone_number = models.IntegerField(null=True)
+    email = models.EmailField(max_length=200, null=True)
     state = models.ForeignKey('State', on_delete=models.SET_NULL, null=True)
     sector = models.ForeignKey('Sector', on_delete=models.SET_NULL, null=True)
     type = models.ForeignKey('Type', on_delete=models.SET_NULL, null=True)
@@ -84,12 +87,131 @@ class NasOrganisation(models.Model):
         help_text = 'Apprencticeship Stage',
     )
 
+    #Promotion
     promotion_Officer =  models.CharField(max_length=200, null=True, blank=True)
+    REPORT_STATUS = (
+        ('YES', 'YES'),
+        ('NO', 'NO'),
+        ('N/A', 'N/A')
+    )
+    promotional_report_available = models.CharField(
+        max_length=5,
+        choices=REPORT_STATUS,
+        blank=True,
+        default='NO',
+        help_text='YES or NO'
+    )
+
+    #Apraisal
     appraisal_Officer =  models.CharField(max_length=200, null=True, blank=True)
+    curriculum_available = models.CharField(
+        max_length=5,
+        choices=REPORT_STATUS,
+        blank=True,
+        default='NO',
+        help_text='YES or NO'
+    )
+    CURRICULUM = (
+        ('ITF', 'ITF'),
+        ('ORGANISATION DESIGN', 'ORGANISATION DESIGN'),
+        ('OTHERS', 'OTHERS'),
+    )
+    curriculum_type = models.CharField(
+        max_length=200,
+        choices=CURRICULUM,
+        blank=True,
+        default='ITF',
+        
+    )
+    
+    training_record_available = models.CharField(
+        max_length=200,
+        choices=REPORT_STATUS,
+        blank=True,
+        default='NO',
+        
+    )
+
+    TRAINING_RECORD = (
+        ('Log Book', 'Log Book'),
+        ('Attendance Register', 'Attendance Register'),
+        ('Daily Record Activity', 'Daily Record Activity'),
+        ('None', 'None')
+    )
+    training_record_type = models.CharField(
+        max_length= 200,
+        choices=TRAINING_RECORD,
+        blank=True,
+        default='None'
+    )
+    certification_available = models.CharField(
+        max_length=5,
+        choices=REPORT_STATUS,
+        blank=True,
+        default='NO',
+        
+    )
+
+    CERTIFICATION = (
+        ('CERTIFICATE OF PARTICIPATION', 'CERTIFICATE OF PARTICIPATION'),
+        ('CERTIFICATE OF COMPETENCY', 'CERTIFICATE OF COMPETENCY')
+    )
+
+    certification_type = models.CharField(
+        max_length=200,
+        choices=CERTIFICATION,
+        blank=True,
+        default='CERTIFICATE OF PARTICIPATION',
+        
+    )
+
+    appraisal_report_available = models.CharField(
+        max_length=5,
+        choices=REPORT_STATUS,
+        blank=True,
+        default='N/A',
+        
+    )
+
+    #Harmonisation
     harmonisation_Officer =  models.CharField(max_length=200, null=True, blank=True)
+    harmonisation_report_available = models.CharField(
+        max_length=5,
+        choices=REPORT_STATUS,
+        blank=True,
+        default='N/A',
+       
+    )
+
+    #Installation
     installation_Officer =  models.CharField(max_length=200, null=True, blank=True)
+    installation_report_available = models.CharField(
+        max_length=5,
+        choices=REPORT_STATUS,
+        blank=True,
+        default='N/A',
+        
+    )
+
+    #Supervision
     supervision_Officer =  models.CharField(max_length=200, null=True, blank=True)
+    supervision_report_available = models.CharField(
+        max_length=5,
+        choices=REPORT_STATUS,
+        blank=True,
+        default='N/A',
+        
+    )
+
+    #Monitoring
     monitoring_Officer =  models.CharField(max_length=200, null=True, blank=True)
+    monitoring_report_available = models.CharField(
+        max_length=5,
+        choices=REPORT_STATUS,
+        blank=True,
+        default='N/A',
+        
+    )
     provisional_approval = models.BooleanField(default=False)
     DOPA = models.DateField(auto_now=False, null = True, blank= True)
 

@@ -14,76 +14,70 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-lg-6">
-      <!-- General Information -->
-      <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h3 class="m-0 font-weight-bold text-primary">General Infomation</h3>
-        </div>
-        <div class="card-body">
-          <p class="text-uppercase clientDetailText">
-              CAC NUMBER: <kbd>{{clientorganisation.CAC_Number}} </kbd>
-          </p>
-         <p class="text-uppercase clientDetailText">
-            SECTOR:    <kbd>{{clientorganisation.sector}}</kbd>
-        </p>
-        <p class="text-uppercase clientDetailText">
-            AREA OF SPECIALISATTION: <kbd>{{clientorganisation.area_of_Specialisation}}</kbd>               
-        </p>
-        <P class="text-uppercase clientDetailText">
-            STAFF STRENGTH: <kbd>{{clientorganisation.staff_Strength}}</kbd> 
-        </P>
-             
-        <p class="text-uppercase clientDetailText">
-            AREA OFFICE: <kbd>{{clientorganisation.area_Office}}</kbd>
-        </p>
 
-        <p class="text-uppercase clientDetailText"> 
-            DATE FORMED: <kbd>{{clientorganisation.date_formed}}</kbd>
-        </P>
 
-        </div>
-      </div>
 
-    </div>
-    <div class="col-lg-6">
+<div class="container-fluid" >
+    <div class="row">
 
-      <!-- Contact Information -->
-      <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h3 class="m-0 font-weight-bold text-primary">Contact Infomation</h3>
-        </div>
-        <div class="card-body">
-          <p class="text-uppercase clientDetailText">
-              ADDRESS: <kbd>{{clientorganisation.address}}</kbd>
-          </p>
+        
+        <div class="card-columns " style="column-count: 2;">
+            
+            
+            <!--Bio-->
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>General Information</h3>
+                </div>
+                <div class="card-body">
+                    <p class="DTS"><strong>CAC NUMBER: </strong>{{clientorganisation.CAC_Number}} </p>
+                    <p class="DTS"><strong>SECTOR: </strong>{{clientorganisation.sector}} </p>
+                    <p class="DTS"><strong>AREA OF SPECIALISATTION: </strong>{{clientorganisation.area_of_Specialisation}} </p>
+                    <p class="DTS"><strong>STAFF STRENGTH: </strong> {{clientorganisation.staff_Strength}} </p>
+                    <p class="DTS"><strong>AREA OFFICE: </strong> {{clientorganisation.area_Office}}</p>
+                    <p class="DTS"><strong>DATE FORMED: </strong> {{clientorganisation.date_formed}} </p>
+                </div>
+              </div>
+        
+        
+        
+        <!--Official Information-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Contact Information</h3>
+                </div>
+                <div class="card-body">
+                    <p class="DTS"><strong>ADDRESS: </strong> {{clientorganisation.address}} </p>
+                    <p class="DTS"><strong>EMAIL: </strong>{{clientorganisation.email}} </p>
+                    <p class="DTS"><strong>STATE: </strong>{{clientorganisation.state}} </p>
+                </div>
+              </div>
+        
+        
 
-          <p class="clientDetailText">
-            EMAIL: <kbd>{{clientorganisation.email}}</kbd>
-        </p>
-        <p class="text-uppercase clientDetailText">
-            STATE: <kbd>{{clientorganisation.state}}</kbd>
-        </P>
-        </div>
-      </div>
-    </div>
+        
+
+        </div> <!--End of Card Column-->
+
+    </div> <!--End of Row-->
+
   </div>
-
+    
 
   <div>
-    {% if user.is_staff %}
-        {% if perms.organisation.can_edit %}
+    
+        {% if perms.ClientDB.change_clientorganisation %} 
       
       <div class="container">
-      <button type="button" class="btn btn-outline-primary"><a href="{% url 'client-organisation_update' clientorganisation.CAC_Number %}">Update {{ clientorganisation }}'s Record</a></button>
+      <a class='btn btn-outline-secondary' href="{% url 'client-organisation_update' clientorganisation.CAC_Number %}">Update {{ clientorganisation }}'s Record</a>
       
-      <button type="button" class="btn btn-outline-primary"><a href="{% url 'client-organisation_delete' clientorganisation.CAC_Number %}">Delete {{ clientorganisation }}'s Record</a></button>
+      <a class='btn btn-outline-secondary' href="{% url 'client-organisation_delete' clientorganisation.CAC_Number %}">Delete {{ clientorganisation }}'s Record</a>
       
       </div>
       
         {% endif %}
-      {% endif %}
+      
   </div>
 
   

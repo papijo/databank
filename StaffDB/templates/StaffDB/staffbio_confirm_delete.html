@@ -1,14 +1,18 @@
-{% extends "base_generic.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
-<h1>Delete Staff Information</h1>
 
-<p>Are you sure you want to delete the Staff Information: {{ staffbio }}?</p>
+
+<div class="container-fluid">
+ <h1>Delete Staff Information from Database</h1>
+
+<p>Are you sure you want to delete the Staff: {{ staffbio }}?</p>
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" value="Yes, delete.">
+  <input class="btn btn-outline-secondary" type="submit" value="Yes, delete.">
 </form>
+</div>
 
 {% endblock %}

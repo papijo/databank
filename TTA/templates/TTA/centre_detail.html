@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="https://images.unsplash.com/photo-1596496181848-3091d4878b24?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="img-thumbnail">
+            </div>
+            <div class="col-md-11">
+                <h1 class="display-3 text-center">{{centre.name}}</h1>              
+            </div>
+        </div>  
+    </div>
+  </div>
+
+  <div class="card mb-6">
+      <div class="card-header"> <h3>Centre Details</h3></div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="DTS list-group-item"><strong>NAME:</strong>  {{centre.name}}</li>
+            <li class="DTS list-group-item"><strong>ADDRESS:</strong>  {{centre.address}}</li>
+            <li class="DTS list-group-item"><strong>STATE:</strong>  {{centre.state}}</li>
+            <li class="DTS list-group-item"><strong>TRADE AREA:</strong>  {{centre.trade_Area.all|join:", "}} </li>
+            <li class="DTS list-group-item"><strong>CONTACT PERSON:</strong>  {{centre.contact_Person}}</li>
+            <li class="DTS list-group-item"><strong>PHONE NUMBER:</strong>  {{centre.contact_Phone_Number}}</li>
+            <li class="DTS list-group-item"><strong>BANK:</strong>  {{centre.bank}}</li>
+            <li class="DTS list-group-item"><strong>ACCOUNT NUMBER:</strong>  {{centre.account_Number}}</li>
+          </ul>
+      </div>
+      
+  </div>
+
+{% if perms.TTA.delete_centre %}
+      
+      <div class="container">
+      <a class='btn btn-outline-secondary' href="{% url 'centre_update' centre.contact_Phone_Number %}">Update {{ centre }}'s Record</a>
+      
+      <a class='btn btn-outline-secondary' href="{% url 'centre_delete' centre.contact_Phone_Number %}">Delete {{ centre }}'s Record</a>
+      
+      </div>
+      
+        {% endif %}
+
+
+
+
+{% endblock%}

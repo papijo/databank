@@ -2,13 +2,15 @@
 
 {% block content %}
 
-<h1>Delete Organisation</h1>
+<div class="container-fluid">
+ <h1>Delete Organisation</h1>
 
 <p>Are you sure you want to delete the Organisation: {{ organisation }}?</p>
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" value="Yes, delete.">
+  <input class="btn btn-outline-secondary" type="submit" value="Yes, delete.">
 </form>
+</div>
 
 {% endblock %}

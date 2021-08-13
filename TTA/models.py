@@ -68,6 +68,35 @@ class Bank(models.Model):
     
     def get_absolute_url(self):
         return reverse("trainee_by_bank", kwargs={"pk": self.slug})
+
+
+class Centre(models.Model):
+    name = models.CharField(max_length=200)
+    address  = models.CharField(max_length = 200)
+    trade_Area = models.ManyToManyField(TradeArea, help_text='Select as many trade areas as applicable')
+    contact_Person = models.CharField(max_length=200)
+    contact_Phone_Number = models.IntegerField(primary_key=True)
+    bank = models.ForeignKey(Bank, on_delete=models.SET_NULL, null = True)
+    account_Number = models.IntegerField()
+    state = models.ForeignKey(State, on_delete=models.SET_NULL, null = True)
+
+    class Meta:
+        ordering = ('name', )
+        verbose_name = 'Centre'
+        verbose_name_plural = 'Centres'
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse("centre-detail", kwargs={"pk": self.pk})
+    
+    def display_trade_area(self):
+        return ', '.join(trade_Area.name for trade_Area in self.trade_Area.all()[:3])
+    
+    display_trade_area.short_description = 'Trade Area'
+
+
     
 
 class Trainee(models.Model):
@@ -81,6 +110,7 @@ class Trainee(models.Model):
     image= models.ImageField(upload_to= 'uploads/trainee')
     special_Intervention_Program = models.ForeignKey(SpecialInterventionProgram, on_delete=models.SET_NULL, null = True)
     state = models.ForeignKey(State, on_delete=models.SET_NULL, null = True)
+    centre = models.ForeignKey(Centre, on_delete=models.SET_NULL, null = True)
     trade_Area = models.ForeignKey(TradeArea, on_delete=models.SET_NULL, null = True)
     #year = models.ForeignKey(Year, on_delete=models.SET_NULL, null=True, max_length=4, default= datetime.now().year)
     bank = models.ForeignKey(Bank, on_delete=models.SET_NULL, null=True)
@@ -88,9 +118,6 @@ class Trainee(models.Model):
     bvn = models.IntegerField(primary_key= True)
     date_of_Program = models.DateField(default=date.today)
     
-
-
-
     def Age(self):
         now = date.today()
         age1 = now - self.DOB

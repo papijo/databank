@@ -44,19 +44,27 @@ from NasDB.forms import NasOrganisationForm
 
 
 
-class NasOrganisationListView(PermissionRequiredMixin, generic.ListView):
-    model = NasOrganisation
-    permission_required = 'NasDB.view_nasorganisation'
+# class NasOrganisationListView(PermissionRequiredMixin, generic.ListView):
+#     model = NasOrganisation
+#     permission_required = 'NasDB.change_nasorganisation'
+
+
+@permission_required('NasDB.change_nasorganisation')
+def nasorganisation_listview(request):
+    context = {}
+    context ['nasorganisation_list'] = NasOrganisation.objects.all()
+
+    return render(request, 'NasDB/nasorganisation_list.html', context=context)
 
 class NasOrganisationDetailView(PermissionRequiredMixin, generic.DetailView):
     model = NasOrganisation
-    permission_required = 'NasDB.view_nasorganisation'
+    permission_required = 'NasDB.change_nasorganisation'
 
 class NasOrganisationCreate(PermissionRequiredMixin, CreateView):
     model = NasOrganisation
     #fields = '__all__'
     form_class = NasOrganisationForm
-    permission_required = 'NasDB.change_nasorganisation'
+    permission_required = 'NasDB.add_nasorganisation'
     raise_exception = False
     
     
@@ -68,11 +76,11 @@ class NasOrganisationUpdate(PermissionRequiredMixin, UpdateView):
 
 class NasOrganisationDelete(PermissionRequiredMixin, DeleteView):
     model = NasOrganisation
-    success_url = reverse_lazy('organisations')
-    permission_required = 'NasDB.change_nasorganisation'
+    success_url = reverse_lazy('nas-organisations')
+    permission_required = 'NasDB.delete_nasorganisation'
 
 
-@permission_required('NasDB.view_nasorganisation')
+@permission_required('NasDB.change_nasorganisation')
 def nasfilter(request):
     nas_organisation_list = NasOrganisation.objects.all()
     nas_organisation_filter = OrganisationFilter(request.GET, queryset=nas_organisation_list)

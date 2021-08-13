@@ -24,11 +24,11 @@
                   <h3>Bio</h3>
                 </div>
                 <div class="card-body">
-                    <p class="staffDetail"><strong>Surname: </strong>{{staffbio.surname}} </p>
-                    <p class="staffDetail"><strong>First Name: </strong>{{staffbio.firstname}} </p>
-                    <p class="staffDetail"><strong>Other Names: </strong>{{staffbio.othernames}} </p>
-                    <p class="staffDetail"><strong>Date of Birth: </strong> {{staffbio.DOB}} </p>
-                    <p class="staffDetail"><strong>Age: </strong> {{staffbio.getAge}} Years Old </p>
+                    <p class="DTS"><strong>SURNAME: </strong>{{staffbio.surname}} </p>
+                    <p class="DTS"><strong>FIRST NAME: </strong>{{staffbio.firstname}} </p>
+                    <p class="DTS"><strong>OTHER NAME: </strong>{{staffbio.othernames}} </p>
+                    <p class="DTS"><strong>DATE OF BIRTH: </strong> {{staffbio.DOB}} </p>
+                    <p class="DTS"><strong>AGE: </strong> {{staffbio.getAge}} Years Old </p>
                 </div>
               </div>
         
@@ -41,14 +41,14 @@
                   <h3>Official Information</h3>
                 </div>
                 <div class="card-body">
-                    <p class="staffDetail"><strong>Staff ID: </strong> {{staffbio.staffId}} </p>
-                    <p class="staffDetail"><strong>Designation: </strong>{{staffbio.designation}} </p>
-                    <p class="staffDetail"><strong>Division: </strong>{{staffbio.division}} </p>
-                    <p class="staffDetail"><strong>Date of Emploment: </strong> {{staffbio.DOE}} </p>
-                    <p class="staffDetail"><strong>Years of Service: </strong> {{staffbio.getEmplomentDate}} </p>
-                    <p class="staffDetail"><strong>Leave Status: </strong> {{staffbio.status}} </p>
-                    <p class="staffDetail"><strong>Leave Start: </strong> {{staffbio.leave_Start}} </p>
-                    <p class="staffDetail"><strong>Leave End: </strong> {{staffbio.leave_End}} </p>
+                    <p class="DTS"><strong>STAFF ID: </strong> {{staffbio.staffId}} </p>
+                    <p class="DTS"><strong>DESIGNATION: </strong>{{staffbio.designation}} </p>
+                    <p class="DTS"><strong>DIVISION: </strong>{{staffbio.division}} </p>
+                    <p class="DTS"><strong>DATE OF EMPLOYMENT: </strong> {{staffbio.DOE}} </p>
+                    <p class="DTS"><strong>YEARS OF SERVICE: </strong> {{staffbio.getEmplomentDate}} </p>
+                    <p class="DTS"><strong>LEAVE STATUS: </strong> {{staffbio.status}} </p>
+                    <p class="DTS"><strong>LEAVE START: </strong> {{staffbio.leave_Start}} </p>
+                    <p class="DTS"><strong>LEAVE END: </strong> {{staffbio.leave_End}} </p>
                 </div>
               </div>
         
@@ -61,10 +61,10 @@
                   <h3>Contact Details</h3>
                 </div>
                 <div class="card-body">
-                  <p class="staffDetail"><strong>Address: </strong> {{staffbio.address}}</p>
-                    <p class="staffDetail"><strong>Official Email: </strong>{{staffbio.email_official}} </p>
-                    <p class="staffDetail"><strong>Email: </strong>{{staffbio.email}} </p>
-                    <p class="staffDetail"><strong>Mobile Phone: </strong>{{staffbio.mobile_phone}}</p>
+                  <p class="DTS"><strong>ADDRESS: </strong> {{staffbio.address}}</p>
+                    <p class="DTS"><strong>OFFICIAL EMAIL: </strong>{{staffbio.email_official}} </p>
+                    <p class="DTS"><strong>EMAIL: </strong>{{staffbio.email}} </p>
+                    <p class="DTS"><strong>MOBILE PHONE: </strong>{{staffbio.mobile_phone}}</p>
                 </div>
               </div>
         
@@ -77,10 +77,10 @@
                   <h3>Educational Information</h3>
                 </div>
                 <div class="card-body">
-                    <p class="staffDetail"><strong>Diploma: </strong>{{staffbio.diploma}}</p>
-                    <p class="staffDetail"><strong>First Degree: </strong>{{staffbio.bachelors_degree}}</p>
-                    <p class="staffDetail"><strong>Masters Degree: </strong>{{staffbio.masters_degree}}</p>
-                    <p class="staffDetail"><strong>Doctorate Degree: </strong>{{staffbio.doctorate_degree}}</p>
+                    <p class="DTS"><strong>DIPLOMA: </strong>{{staffbio.diploma}}</p>
+                    <p class="DTS"><strong>FIRST DEGREE: </strong>{{staffbio.bachelors_degree}}</p>
+                    <p class="DTS"><strong>MASTERS DEGREE: </strong>{{staffbio.masters_degree}}</p>
+                    <p class="DTS"><strong>DOCTORATE DEGREE: </strong>{{staffbio.doctorate_degree}}</p>
                 </div>
               </div>
         
@@ -92,8 +92,8 @@
                   <h3>Career Development</h3>
                 </div>
                 <div class="card-body">
-                    <p class="staffDetail"><strong>Certifications: </strong>{{staffbio.certification.all|join:", "}}</p>
-                    <p class="staffDetail"><strong>Training Programmes: </strong>{{staffbio.trainings_attended.all|join:", " }}</p>
+                    <p class="DTS"><strong>CERTIFICATIONS: </strong>{{staffbio.certification.all|join:", "}}</p>
+                    <p class="DTS"><strong>TRAINING PROGRAMMES: </strong>{{staffbio.trainings_attended.all|join:", " }}</p>
                 </div>
               </div>
 
@@ -102,7 +102,21 @@
     </div> <!--End of Row-->
 
   </div>
+
+<div>
     
+        {% if perms.StaffDB.change_staffbio %} 
+      
+      <div class="container">
+      <a class='btn btn-outline-secondary' href="{% url 'staff_update' staffbio.staffId %}">Update {{ staffbio }}'s Record</a>
+      
+      <a class='btn btn-outline-secondary' href="{% url 'staff_delete' staffbio.staffId %}">Delete {{ staffbio }}'s Record</a>
+      
+      </div>
+      
+        {% endif %}
+      
+  </div>
 
 
 {% endblock content %}

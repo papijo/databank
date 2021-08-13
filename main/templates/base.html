@@ -66,7 +66,9 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
      
+{% comment %} Client Information {% endcomment %}
 
+  {% if perms.ClientDB.view_clientorganisation %}
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiesClient1" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
@@ -98,7 +100,16 @@
           </div>
         </div>
       </li>
+{% endif %}
 
+{% comment %} End of Client Information {% endcomment %}
+
+
+
+
+{% comment %} National Apprentice Scheme Database {% endcomment %}
+
+{% if perms.NasDB.view_nasorganisation %}
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -109,7 +120,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       
-
+  
       <!-- Nav Item - NAS -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiesNas1" aria-expanded="true" aria-controls="collapseUtilities">
@@ -142,11 +153,16 @@
           </div>
         </div>
       </li>
-      
+    {% endif %}
 
+{% comment %} End of National Apprentice Scheme Database {% endcomment %}
+      
+       {% comment %} Trainnee Tracking Application {% endcomment %}
+  {% if perms.TTA.view_trainee %}
        <!-- Divider -->
       <hr class="sidebar-divider">
 
+     
             <!-- Heading -->
       <div class="sidebar-heading">
         Trainee Tracking App
@@ -161,6 +177,13 @@
 
       <!-- Nav Item - Trainee List -->
       <li class="nav-item">
+        <a class="nav-link" href="{% url 'centres' %}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Centre List</span></a>
+      </li>
+
+      <!-- Nav Item - Trainee List -->
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiestta2" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
           <span>TTA DB Functions</span>
@@ -169,14 +192,21 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Functions:</h6>
             <a class="collapse-item" href="{% url 'trainee_create' %} ">Add Trainee to DB</a>
+            <a class="collapse-item" href="{% url 'centre_create' %} ">Add Centre to DB</a>
             <a class="collapse-item" href=" {% url 'trainee_search' %}">Search Database</a>
             
           </div>
         </div>
       </li>
+{% endif %}
+{% comment %} End of Trainee Tracking App {% endcomment %}
 
+{% comment %} Staff Bio-Information Database {% endcomment %}
+    {% if perms.StaffDB.view_staffbio %}
       <!-- Divider -->
       <hr class="sidebar-divider">
+
+
 
       <!-- Heading -->
       <div class="sidebar-heading">
@@ -216,7 +246,8 @@
           </div>
         </div>
       </li>
-
+{% endif %}
+{% comment %} End of Staff Databank {% endcomment %}
     
 
 

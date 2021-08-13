@@ -129,9 +129,8 @@ class StaffCreate(PermissionRequiredMixin, CreateView):
     form_class = StaffBioForm
     #fields = '__all__'
     #permission_required = 'staffbio.can_edit'
-    permission_required = 'StaffDB.change_staffbio'
-    raise_exception = False
-
+    permission_required = 'StaffDB.add_staffbio'
+    
 class StaffUpdate(PermissionRequiredMixin, UpdateView):
     model = StaffBio
     fields = '__all__'
@@ -142,7 +141,8 @@ class StaffUpdate(PermissionRequiredMixin, UpdateView):
 class StaffDelete(PermissionRequiredMixin, DeleteView):
     model = StaffBio
     success_url = reverse_lazy('staff')
-    permission_required = 'StaffDB.change_staffbio'
+    permission_required = 'StaffDB.delete_staffbio'
+    template_name = 'StaffDB/staffbio_confirm_delete.html'
     #permission_required = 'staffbio.can_edit'
 
 
@@ -162,4 +162,4 @@ def staffFilter(request):
     staff_filter_count = staff_filter.qs.count()
 
 
-    return render(request, 'staffdb/filter.html', {'filter': staff_filter, 'staff_filter_count': staff_filter_count})
+    return render(request, 'StaffDB/filter.html', {'filter': staff_filter, 'staff_filter_count': staff_filter_count})

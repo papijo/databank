@@ -21,6 +21,11 @@
 <div class="container-fluid">
     <form method="post" action="" enctype="multipart/form-data" >
       {% csrf_token %}
+      
+      <!-- General Information -->
+      <h3 class="text-center" > General Information </h3>
+       <hr class="sidebar-divider">
+
       <div class="form-row">
         <div class="form-group col-md-4 mb-0">
           {{ form.name|as_crispy_field }}
@@ -32,35 +37,89 @@
           {{ form.YOE|as_crispy_field }}
         </div>
       </div>
-      
-       <div class="form-row ">
+
+      <div class="form-row">
+                <div class="form-group col-md-4 mb-0">
+          {{ form.sector|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.staff_Strength|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.area_of_Specialization|as_crispy_field }}
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+
+      <hr class="sidebar-divider">
+      <h3 class = "text-center">Contact Information</h3>
+      <hr class="sidebar-divider">
+      <div class="form-row ">
         <div class="form-group col-sm-12 mb-0">
           {{ form.address|as_crispy_field }}
         </div>
-
       </div>
-
       <div class="form-row">
-        <div class="form-group col-md-3 mb-0">
+        <div class="form-group col-md-4 mb-0">
+          {{ form.contact_person|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.email|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.phone_number|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
           {{ form.state|as_crispy_field }}
         </div>
-
-        <div class="form-group col-md-3 mb-0">
-          {{ form.sector|as_crispy_field }}
-        </div>
-        <div class="form-group col-md-3 mb-0">
-          {{ form.staff_Strength|as_crispy_field }}
-        </div>
-        <div class="form-group col-md-3 mb-0">
-          {{ form.area_of_Specialization|as_crispy_field }}
-        </div>
-
       </div>
 
+      <!-- Apprenticeship Activities -->
       <hr class="sidebar-divider">
       <h3 class="text-center" > Apprenticeship Activities </h3>
       <hr class="sidebar-divider">
+      <div class="form-row">
+        <div class="form-group col-md-4 mb-0">
+          {{ form.stage|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.DOPA|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.provisional_approval|as_crispy_field }}
+        </div>
+      </div>
 
+      <div class="form-row">
+        <div class="form-group col-md-4 mb-0">
+          {{ form.curriculum_available|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.curriculum_type|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.training_record_available|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.training_record_type|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.certification_available|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.certification_type|as_crispy_field }}
+        </div>
+
+
+
+      </div>
+      
+      <!-- Apprenticeship Officers -->
+      <hr class="sidebar-divider">
+      <h3 class="text-center" > Apprenticeship Officers </h3>
+      <hr class="sidebar-divider">
+      
       
       <div class="form-row">
         <div class="form-group col-md-4 mb-0">
@@ -84,16 +143,35 @@
           {{ form.monitoring_Officer|as_crispy_field }}
         </div>
       </div>
+      
+      <!-- Report Status -->
+      <hr class="sidebar-divider">
+      <h3 class="text-center" > Report Status </h3>
+      <hr class="sidebar-divider">
+
+      <div class="form-row">
+
+        <div class="form-group col-md-4 mb-0">
+          {{ form.promotional_report_available|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.appraisal_report_available|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4 mb-0">
+          {{ form.harmonisation_report_available|as_crispy_field }}
+        </div>
+      </div>
       <div class="form-row">
         <div class="form-group col-md-4 mb-0">
-          {{ form.stage|as_crispy_field }}
+          {{ form.installation_report_available|as_crispy_field }}
         </div>
         <div class="form-group col-md-4 mb-0">
-          {{ form.DOPA|as_crispy_field }}
+          {{ form.supervision_report_available|as_crispy_field }}
         </div>
         <div class="form-group col-md-4 mb-0">
-          {{ form.provisional_approval|as_crispy_field }}
+          {{ form.monitoring_report_available|as_crispy_field }}
         </div>
+
       </div>
       
       <button type="submit" value="Submit" class="btn btn-primary">Submit</button>

@@ -11,4 +11,4 @@ class TraineeFilter(django_filters.FilterSet):
 
     class Meta:
         model = Trainee
-        fields = ['state', 'trade_Area', 'special_Intervention_Program']
+        fields = ['state', 'trade_Area', 'special_Intervention_Program', 'centre']

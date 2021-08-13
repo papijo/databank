@@ -27,7 +27,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 #     return render (request,  'main/index.html', context=context)
 
-@login_required
+@permission_required('ClientDB.view_clientorganisation')
 def filtertest(request):
     client_organisation_list = ClientOrganisation.objects.all()
     client_organisation_filter = OrganisationFilter(request.GET, queryset=client_organisation_list)
@@ -46,7 +46,7 @@ def filtertest(request):
 #     paginate_by = 10
     
 
-@login_required
+@permission_required('ClientDB.view_clientorganisation')
 def client_list(request, sector_slug = None, areaoffice_slug = None, state_slug = None):
     sector = None
     sectors = Sector.objects.all()
@@ -93,8 +93,9 @@ def client_list(request, sector_slug = None, areaoffice_slug = None, state_slug 
 
 
 
-class ClientOrganisationDetailView(LoginRequiredMixin, generic.DetailView):
+class ClientOrganisationDetailView(PermissionRequiredMixin, generic.DetailView):
     model = ClientOrganisation
+    permission_required = 'ClientDB.view_clientorganisation'
 
 
 
@@ -102,7 +103,7 @@ class ClientOrganisationCreate(PermissionRequiredMixin, CreateView):
     model = ClientOrganisation
     #fields = '__all__'
     form_class = ClientOrganisationForm
-    permission_required = 'ClientDB.change_clientorganisation'
+    permission_required = 'ClientDB.add_clientorganisation'
 
 class ClientOrganisationUpdate(PermissionRequiredMixin, UpdateView):
     model = ClientOrganisation
@@ -112,4 +113,4 @@ class ClientOrganisationUpdate(PermissionRequiredMixin, UpdateView):
 class ClientOrganisationDelete(PermissionRequiredMixin, DeleteView):
     model = ClientOrganisation
     success_url = reverse_lazy('client-organisations')
-    permission_required = 'ClientDB.change_clientorganisation'
+    permission_required = 'ClientDB.delete_clientorganisation'
