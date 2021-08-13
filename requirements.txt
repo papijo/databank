@@ -1,0 +1,5 @@
+Django
+crispy_forms
+widget_tweaks
+pillow
+django-filter
