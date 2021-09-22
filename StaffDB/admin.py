@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin
-from .models import StaffBio, Training, Division, Certification, Designation
+from .models import StaffBio, Training, Division, Certification, Designation, State
 
 
 
@@ -18,7 +18,7 @@ admin.site.register(Certification)
 class StaffBioAdmin(admin.ModelAdmin):
     list_display = ['surname', 'firstname', 'othernames', 'staffId', 'designation', 'division', 'email_official', 'email', 'mobile_phone', 'staff_image' ]
     list_filter = ['division', 'designation']
-    fields = ('surname', 'firstname', 'othernames', 'DOB', 'DOE', 'address', 'staffId', 'designation', 'division', 'status', 'email_official', 'email', 'mobile_phone','diploma', 'bachelors_degree', 'masters_degree', 'doctorate_degree', 'certification', 'trainings_attended','image', 'favQuote','leave_Start', 'leave_End' )
+    fields = ('surname', 'firstname', 'othernames', 'date_of_Birth', 'state_of_Origin', 'LGA', 'senatorial_District', 'sex', 'address', 'date_of_Employment', 'staffId', 'designation', 'conitfs', 'division', 'date_of_Last_Promotion', 'date_of_Next_Promotion', 'status', 'email_official', 'email', 'mobile_phone','diploma', 'bachelors_degree', 'masters_degree', 'doctorate_degree', 'certification', 'trainings_attended','image', 'favQuote','leave_Start', 'leave_End' )
     readonly_fields = ['staff_image']
     search_fields = ('surname', 'firstname', 'othernames', 'staffId',)
     

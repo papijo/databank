@@ -13,4 +13,5 @@ class NasOrganisationForm(ModelForm):
         widgets = {
             'YOE': DateInput(),
             'DOPA':DateInput(),
+            'DOFA': DateInput(),
         }

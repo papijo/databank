@@ -17,7 +17,7 @@
 
   <div class="container-fluid" >
     <div class="row">        
-        <div class="card-columns " style="column-count: 2;">
+        <div class="card-columns " style="column-count: 1;">
             
             
             <!--General Information-->
@@ -26,78 +26,152 @@
                   <h3>General Information</h3>
                 </div>
                 <div class="card-body">
-                    <p class="DTS"><strong>ONWERSHIP TYPE: </strong>{{nasorganisation.type}} </p>
-                    <p class="DTS"><strong>SECTOR: </strong>{{nasorganisation.sector}} </p>
-                    <p class="DTS"><strong>AREA OF SPECIALISATTION: </strong>{{nasorganisation.area_of_Specialisation}} </p>
-                    <p class="DTS"><strong>STAFF STRENGTH: </strong> {{nasorganisation.staff_Strength}} </p>
-                    <p class="DTS"><strong>DATE FORMED: </strong> {{nasorganisation.YOE}} </p>
-                </div>
-              </div>
-        
-        
-        
-        <!--Official Information-->
-        
-            <div class="card mb-6">
-                <div class="card-header">
-                  <h3>Contact Information</h3>
-                </div>
-                <div class="card-body">
                     <p class="DTS"><strong>ADDRESS: </strong> {{nasorganisation.address}} </p>
                     <p class="DTS"><strong>CONTACT PERSON: </strong> {{nasorganisation.contact_person}} </p>
-                    <p class="DTS"><strong>PHONE NUMBER: </strong> {{nasorganisation.phone_number}} </p>
+                    <p class="DTS"><strong>PHONE NUMBER: </strong> 0{{nasorganisation.phone_number}} </p>
                     <p class="DTS"><strong>EMAIL: </strong>{{nasorganisation.email}} </p>
                     <p class="DTS"><strong>STATE: </strong>{{nasorganisation.state}} </p>
+                    <p class="DTS"><strong>ONWERSHIP TYPE: </strong>{{nasorganisation.type}} </p>
+                    <p class="DTS"><strong>SECTOR: </strong>{{nasorganisation.sector}} </p>
+                    <p class="DTS"><strong>SUB-SECTOR: </strong>{{nasorganisation.sub_Sector}} </p>
+                    <p class="DTS"><strong>STAFF STRENGTH (Permanent): </strong> {{nasorganisation.staff_Strength_Permanent}} </p>
+                    <p class="DTS"><strong>STAFF STRENGTH (Contract): </strong> {{nasorganisation.staff_Strength_Contract}} </p>
+                    <p class="DTS"><strong>STAFF STRENGTH (Temporary): </strong> {{nasorganisation.staff_Strength_Temporary}} </p>
+                    <p class="DTS"><strong>DATE FORMED: </strong> {{nasorganisation.YOE}} </p>
+                    <p class="DTS"><strong>REGISTERED WITH CAC: </strong> {{nasorganisation.cac_registration}} </p>
+                    <p class="DTS"><strong>IF YES, CAC REG NUMBER: </strong> {{nasorganisation.cac_Reg_Number}} </p>
+                    <p class="DTS"><strong>REGISTERED WITH ITF: </strong> {{nasorganisation.itf_registration}} </p>
+                    <p class="DTS"><strong>IF YES, ITF REG NUMBER: </strong> {{nasorganisation.itf_Reg_Number}} </p>
+                    <p class="DTS"><strong>STAGE: </strong>{{nasorganisation.stage}} </p>
                 </div>
               </div>
-
-        <!--Apprenticeship Activities-->
+        <!--Promotional Activities-->
         
             <div class="card mb-6">
                 <div class="card-header">
-                  <h3>Apprencticeship Activities</h3>
-                </div>
-                <div class="card-body">
-                    <p class="DTS"><strong>CURRICULUM AVAILABLE: </strong> {{nasorganisation.curriculum_available}} </p>
-                    <p class="DTS"><strong>CURRICULUM TYPE: </strong> {{nasorganisation.curriculum_type}} </p>
-                    <p class="DTS"><strong>TRAINING RECORD AVAILABLE: </strong> {{nasorganisation.training_record_available}} </p>
-                    <p class="DTS"><strong>TRAINING RECORD TYPE: </strong>{{nasorganisation.record_type}} </p>
-                    <p class="DTS"><strong>CERTIFICATION AVAILABLE: </strong>{{nasorganisation.certification_available}} </p>
-                    <p class="DTS"><strong>CERTIFICATION TYPE: </strong>{{nasorganisation.certification_type}} </p>
-                    <p class="DTS"><strong>PROVISIONAL APPROVAL: </strong>{{nasorganisation.provisional_approval}} </p>
-                    <p class="DTS"><strong>DATE OF PROVISIONAL APPROVAL: </strong>{{nasorganisation.DOPA}} </p>
-                </div>
-              </div>
-
-              <!--NAS DB OFFICERS-->
-        
-            <div class="card mb-6">
-                <div class="card-header">
-                  <h3>Apprencticeship Officers</h3>
+                  <h3>Promotional Activities</h3>
                 </div>
                 <div class="card-body">
                     <p class="DTS"><strong>PROMOTIONAL OFFICER: </strong> {{nasorganisation.promotion_Officer}} </p>
-                    <p class="DTS"><strong>APPRAISAL OFFICER: </strong> {{nasorganisation.appraisal_Officer}} </p>
-                    <p class="DTS"><strong>HARMONISATION OFFICER: </strong> {{nasorganisation.harmonisation_Officer}} </p>
-                    <p class="DTS"><strong>INSTALLATION OFFICER: </strong>{{nasorganisation.installation_Officer}} </p>
-                    <p class="DTS"><strong>SUPERVISION OFFICER: </strong>{{nasorganisation.supervision_Officer}} </p>
-                     <p class="DTS"><strong>MONITORING OFFICER: </strong>{{nasorganisation.monitoring_Officer}} </p>
+                    <p class="DTS"><strong>PROMOTIONAL REPORT AVAILABLE: </strong> {{nasorganisation.promotional_report_available}} </p>
+                    {% if nasorganisation.promotional_report %}
+                    <p class="DTS"><strong>PROMOTIONAL REPORT: </strong> <a href="{{nasorganisation.promotional_report.url}}"> Download Report </a></p>
+                    {% endif %}
+                    <p class="DTS"><strong>PRODUCTS: </strong> {{nasorganisation.products}}</p>
+                    <p class="DTS"><strong>SERVICES: </strong> {{nasorganisation.services}}</p>
+                    <p class="DTS"><strong>TRAINING NEEDS ANALYSIS: </strong> {{nasorganisation.tna}} </p>
                 </div>
               </div>
-            
-            <!--Report Status-->
+
+        <!--Appraisal Activities-->
         
             <div class="card mb-6">
                 <div class="card-header">
-                  <h3>Report Status</h3>
+                  <h3>Appraisal Activities</h3>
                 </div>
                 <div class="card-body">
-                    <p class="DTS"><strong>PROMOTIONAL REPORT AVAILABLE: </strong> {{nasorganisation.promotional_report_available}} </p>
+                    <p class="DTS"><strong>APPRAISAL OFFICER: </strong> {{nasorganisation.appraisal_Officer}} </p>
+                    <p class="DTS"><strong>CURRICULUM AVAILABLE: </strong> {{nasorganisation.curriculum_available}} </p>
+                    <p class="DTS"><strong>CURRICULUM TYPE: </strong> {{nasorganisation.curriculum_type}} </p>
+                    <p class="DTS"><strong>OTHER CURRICULUM TYPE: </strong> {{nasorganisation.other_curriculum_type}} </p>
+                    <p class="DTS"><strong>RECRUITMENT AND SELECTION METHOD: </strong> {{nasorganisation.recruitment_and_Selection}} </p>
+                    <p class="DTS"><strong>TRAINING RECORD AVAILABLE: </strong> {{nasorganisation.training_record_available}} </p>
+                    <p class="DTS"><strong>TRAINING RECORD TYPE: </strong>{{nasorganisation.record_type}} </p>
+                    
+                    <p class="DTS"><strong>TRAINING APPROACH (PRACTICAL): </strong>{{nasorganisation.training_Approach_Practical}} % </p>
+                    <p class="DTS"><strong>TRAINING APPROACH (THEORY): </strong>{{nasorganisation.training_Approach_Theory}} %</p>
+                    <p class="DTS"><strong>TRAINING APPROACH (ON THE JOB): </strong>{{nasorganisation.training_Approach_}} %</p>
+
+                    <p class="DTS"><strong>CERTIFICATION AVAILABLE: </strong>{{nasorganisation.certification_available}} </p>
+                    <p class="DTS"><strong>CERTIFICATION TYPE: </strong>{{nasorganisation.certification_type}} </p>
+                    <p class="DTS"><strong>APPRENTICESHIP CONTRACT AGREEMENT: </strong>{{nasorganisation.apprenticeship_Contract_Agreement}} </p>                   
+                    <p class="DTS"><strong>APPRAISAL FINDINGS: </strong>{{nasorganisation.appraisal_findings}} </p>
+                    <p class="DTS"><strong>APPRAISAL RECOMMENDATIONS: </strong>{{nasorganisation.appraisal_recommendations}} </p>
+                    <p class="DTS"><strong>APPRAISAL CONCLUSION: </strong>{{nasorganisation.appraisal_conclusion}} </p>
+                    
+                    <p class="DTS"><strong>TRAINEE WELFARE: </strong>{{nasorganisation.welfare_for_Trainee}} </p>
                     <p class="DTS"><strong>APPRAISAL REPORT AVAILABLE: </strong> {{nasorganisation.appraisal_report_available}} </p>
+
+                    {% if nasorganisation.appraisal_report %}
+                    <p class="DTS"><strong>APPRAISAL REPORT: </strong> <a href = "{{nasorganisation.appraisal_report.url}}">Download Report</a></p>
+                    {% endif %}
+                    
+
+                    
+                </div>
+              </div>
+
+              <!--Harmonisation Activities-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Harmonisation Activities</h3>
+                </div>
+                <div class="card-body">
+                    <p class="DTS"><strong>HARMONISATION OFFICER: </strong> {{nasorganisation.harmonisation_Officer}} </p>
                     <p class="DTS"><strong>HARMONISATION REPORT AVAILABLE: </strong> {{nasorganisation.harmonisation_report_available}} </p>
+                    {% if nasorganisation.harmonisation_report %}
+                    <p class="DTS"><strong>HARMONISATION REPORT: </strong> <a href = "{{nasorganisation.harmonisation_report.url}}"> Download Report</a></p>
+                    {% endif %}
+                    
+                </div>
+              </div>
+            
+            <!--Installation Activities-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Installation Activities</h3>
+                </div>
+                <div class="card-body">                   
+                    <p class="DTS"><strong>INSTALLATION OFFICER: </strong> {{nasorganisation.installation_officer}} </p>
                     <p class="DTS"><strong>INSTALLATION REPORT AVAILABLE: </strong> {{nasorganisation.installation_report_available}} </p>
-                    <p class="DTS"><strong>SUPERVISION REPORT AVAILABLE </strong>{{nasorganisation.supervision_report_available}} </p>
-                    <p class="DTS"><strong>MONITORING REPORT AVAILABLE: </strong>{{nasorganisation.monitoring_report_available}} </p>
+                    {% if nasorganisation.installation_report %}
+                    <p class="DTS"><strong>INSTALLATION REPORT: </strong> <a href= "{{nasorganisation.installation_report}}">Download Report</a></p>
+                    {% endif %}
+                    
+                </div>
+              </div>
+            
+            <!--Inspection/Supervision/Monitoring Activities-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Inspection/Supervision/Monitoring (ISM) Activities</h3>
+                </div>
+                <div class="card-body">
+                    
+                    
+                    <p class="DTS"><strong>ISM OFFICER: </strong> {{nasorganisation.ISM_officer}} </p>
+                    <p class="DTS"><strong>ISM REPORT AVAILABLE: </strong> {{nasorganisation.ISM_report_available}} </p>
+                    {% if nasorganisation.ISM_report %}
+                    <p class="DTS"><strong>ISM REPORT: </strong> <a href = "{{nasorganisation.ISM_report.url}}">Download Report</a> </p>
+                    {% endif %}
+                    
+                    <p class="DTS"><strong>PLANNING OF TRAINING PROGRAMME: </strong> {{nasorganisation.planning_of_Training_Programme}} </p>
+                    <p class="DTS"><strong>USE OF APPROPRIATE METHOD OF TRAINING: </strong> {{nasorganisation.use_of_Appropriate_Method_of_Training}} </p>
+                    <p class="DTS"><strong>RECORD OF TRAINING PERFORMANCE: </strong> {{nasorganisation.record_of_Trainees_Performance}} </p>
+                    <p class="DTS"><strong>ENTRIES IN TRAINEES LOGBOOK: </strong> {{nasorganisation.entries_in_Trainees_Logbook}}</p>
+                    <p class="DTS"><strong>PROGRESS REPORT OF THE SCHEME: </strong> {{nasorganisation.planning_of_Training_Programme}} </p>
+                    <p class="DTS"><strong>GENERAL RECORD KEEPING: </strong> {{nasorganisation.general_Record_Keeping}} </p>
+                    
+
+                    
+                </div>
+              </div>
+
+              <!--Approvals and Certification-->
+        
+            <div class="card mb-6">
+                <div class="card-header">
+                  <h3>Approvals and Certification</h3>
+                </div>
+                <div class="card-body">                   
+                    <p class="DTS"><strong>PROVISIONAL APPROVAL: </strong> {{nasorganisation.provisional_approval}} </p>
+                    <p class="DTS"><strong>DATE OF PROVISIONAL APPROVAL: </strong> {{nasorganisation.DOPA}} </p>
+                    <p class="DTS"><strong>FULL APPROVAL: </strong> {{nasorganisation.full_approval}} </p>
+                    <p class="DTS"><strong>DATE OF FULL APPROVAL: </strong> {{nasorganisation.DOFA}} </p>
+                    <p class="DTS"><strong>INSTALLATION REPORT: </strong> {{nasorganisation.installation_report}} </p>
                 </div>
               </div>
 

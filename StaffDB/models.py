@@ -8,6 +8,20 @@ from datetime import datetime, date
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+
+class State(models.Model):
+	name = models.CharField(max_length=200)
+	slug = models.SlugField(max_length=200)
+
+	class Meta:
+		ordering = ('name', )
+		verbose_name = 'state'
+		verbose_name_plural = 'states'
+	
+	def get_absolute_url(self):
+		return reverse("staff_by_state", args= [self.slug])
+	
+
 class Division(models.Model):
 
 	name = models.CharField(max_length = 200)
@@ -83,23 +97,85 @@ class Training(models.Model):
 		return self.name
 
 class StaffBio(models.Model):
+	#Bio
 	surname= models.CharField(max_length=200, db_index=True)
 	firstname= models.CharField(max_length=200)
 	othernames= models.CharField(max_length=200, blank=True)
-	DOB = models.DateField(auto_now=False)
-	DOE = models.DateField(auto_now=False, null = True)
+	date_of_Birth = models.DateField(auto_now=False)
+	state_of_Origin = models.ForeignKey('State', on_delete=models.SET_NULL, null = True)
+	LGA = models.CharField(max_length=200, blank=False)
+	senatorial_District = models.CharField(max_length=200, blank=False)
+	GENDER_OPTION = (
+		('Male', 'Male'),
+		('Female', 'Female'),
+	)
+	sex = models.CharField(
+		choices= GENDER_OPTION,
+		blank=False,
+		default='Male',
+		max_length= 20
+	)
+
+	MARITAL_STATUS_CHOICES = (
+		('Single', 'Single'),
+		('Married', 'Married')
+	)
+	marital_Status  = models.CharField(
+		choices=MARITAL_STATUS_CHOICES,
+		blank=False,
+		default='Single',
+		max_length=20
+	)
+
+	#Official
+	date_of_Employment = models.DateField(auto_now=False, null = True)
 	#annualleave = models.ForeignKey('AnnualLeave', on_delete=models.SET_NULL, null = True )
 	staffId= models.SmallIntegerField(primary_key= True)
 	designation = models.ForeignKey('Designation', on_delete=models.SET_NULL, null = True)
 	division= models.ForeignKey(Division, on_delete=models.SET_NULL,  null=True)
+	CONITFS_LEVEL = (
+		('1', '1'),
+		('2', '2'),
+		('3', '3'),
+		('4', '4'),
+		('5', '5'),
+		('6', '6'),
+		('7', '7'),
+		('8', '8'),
+		('9', '9'),
+		('10', '10'),
+		('11', '11'),
+		('12', '12'),
+		('13', '13'),
+		('14', '14'),
+		('15', '15'),
+		('16', '16'),
+		('17', '17'),
+	)
+	conitfs = models.CharField(
+		choices= CONITFS_LEVEL,
+		blank = False,
+		default='1',
+		max_length=20
+	)
+	date_of_Last_Promotion = models.DateField(auto_now=False, null=True)
+	date_of_next_Promotion = models.DateField(auto_now=False, null=True)
+
+	#Contact Information
 	email_official= models.CharField(max_length=200, unique=True)
 	email= models.CharField(max_length=200 , unique=True)
 	mobile_phone= models.CharField(max_length = 200, null=True , unique=True)
 	address = models.CharField(max_length = 200, null = True)
+	
+
+
+	#Education
 	diploma = models.CharField(max_length=200, blank=True)
-	bachelors_degree=models.CharField(max_length=200)
+	bachelors_degree=models.CharField(max_length=200, null=True, blank=True)
 	masters_degree=models.CharField(max_length=200,  null=True, blank=True)
 	doctorate_degree = models.CharField(max_length = 200, null=True, blank=True)
+
+	#Career Development
 	certification= models.ManyToManyField('Certification', blank = True)
 	trainings_attended=models.ManyToManyField('Training')
 	image= models.ImageField(upload_to= 'uploads/staff')
@@ -124,19 +200,33 @@ class StaffBio(models.Model):
 		max_length=20
 	)
 
+	 
+
 	# class Meta:
 	# 	permissions = (("can_edit", "Set Staff for Editing"),)
 
 
 	def getAge(self):
 		now = date.today()
-		age1 = now - self.DOB
+		age1 = now - self.date_of_Birth
 		age2 = int((age1).days / 365.2425)
 		return age2
 		
-	def getEmplomentDate(self):
+	def getEmplomentAge(self):
 		now = date.today()
-		date1 = now - self.DOE
+		date1 = now - self.date_of_Employment
+		date2 = int((date1).days / 365.2425)
+		return date2
+	
+	def getPromotionAge(self):
+		now = date.today()
+		date1 = now - self.date_of_Last_Promotion
+		date2 = int((date1).days / 365.2425)
+		return date2
+
+	def getNextPromotionAge(self):
+		now = date.today()
+		date1 = self.date_of_next_Promotion - now
 		date2 = int((date1).days / 365.2425)
 		return date2
 	
