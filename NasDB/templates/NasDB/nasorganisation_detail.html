@@ -34,6 +34,8 @@
                     <p class="DTS"><strong>ONWERSHIP TYPE: </strong>{{nasorganisation.type}} </p>
                     <p class="DTS"><strong>SECTOR: </strong>{{nasorganisation.sector}} </p>
                     <p class="DTS"><strong>SUB-SECTOR: </strong>{{nasorganisation.sub_Sector}} </p>
+                    <p class="DTS"><strong>TRADE AREA: </strong>{{nasorganisation.trade_Area.all | join:', '}} </p>
+                    {% comment %} <p> {% for trade_Area in nasorganisation.trade_Area.all %}{{trade_Area}} {%if not forloop.last%}, {%endif%}{%endfor%} </p> {% endcomment %}
                     <p class="DTS"><strong>STAFF STRENGTH (Permanent): </strong> {{nasorganisation.staff_Strength_Permanent}} </p>
                     <p class="DTS"><strong>STAFF STRENGTH (Contract): </strong> {{nasorganisation.staff_Strength_Contract}} </p>
                     <p class="DTS"><strong>STAFF STRENGTH (Temporary): </strong> {{nasorganisation.staff_Strength_Temporary}} </p>
@@ -55,7 +57,7 @@
                     <p class="DTS"><strong>PROMOTIONAL OFFICER: </strong> {{nasorganisation.promotion_Officer}} </p>
                     <p class="DTS"><strong>PROMOTIONAL REPORT AVAILABLE: </strong> {{nasorganisation.promotional_report_available}} </p>
                     {% if nasorganisation.promotional_report %}
-                    <p class="DTS"><strong>PROMOTIONAL REPORT: </strong> <a href="{{nasorganisation.promotional_report.url}}"> Download Report </a></p>
+                    <p class="DTS"><strong>PROMOTIONAL REPORT: </strong> <a target="_blank" href="{{nasorganisation.promotional_report.url}}"> Download Report </a></p>
                     {% endif %}
                     <p class="DTS"><strong>PRODUCTS: </strong> {{nasorganisation.products}}</p>
                     <p class="DTS"><strong>SERVICES: </strong> {{nasorganisation.services}}</p>
@@ -93,7 +95,7 @@
                     <p class="DTS"><strong>APPRAISAL REPORT AVAILABLE: </strong> {{nasorganisation.appraisal_report_available}} </p>
 
                     {% if nasorganisation.appraisal_report %}
-                    <p class="DTS"><strong>APPRAISAL REPORT: </strong> <a href = "{{nasorganisation.appraisal_report.url}}">Download Report</a></p>
+                    <p class="DTS"><strong>APPRAISAL REPORT: </strong> <a target="_blank" href = "{{nasorganisation.appraisal_report.url}}">Download Report</a></p>
                     {% endif %}
                     
 
@@ -111,7 +113,7 @@
                     <p class="DTS"><strong>HARMONISATION OFFICER: </strong> {{nasorganisation.harmonisation_Officer}} </p>
                     <p class="DTS"><strong>HARMONISATION REPORT AVAILABLE: </strong> {{nasorganisation.harmonisation_report_available}} </p>
                     {% if nasorganisation.harmonisation_report %}
-                    <p class="DTS"><strong>HARMONISATION REPORT: </strong> <a href = "{{nasorganisation.harmonisation_report.url}}"> Download Report</a></p>
+                    <p class="DTS"><strong>HARMONISATION REPORT: </strong> <a target="_blank" href = "{{nasorganisation.harmonisation_report.url}}"> Download Report</a></p>
                     {% endif %}
                     
                 </div>
@@ -127,7 +129,7 @@
                     <p class="DTS"><strong>INSTALLATION OFFICER: </strong> {{nasorganisation.installation_officer}} </p>
                     <p class="DTS"><strong>INSTALLATION REPORT AVAILABLE: </strong> {{nasorganisation.installation_report_available}} </p>
                     {% if nasorganisation.installation_report %}
-                    <p class="DTS"><strong>INSTALLATION REPORT: </strong> <a href= "{{nasorganisation.installation_report}}">Download Report</a></p>
+                    <p class="DTS"><strong>INSTALLATION REPORT: </strong> <a target="_blank" href= "{{nasorganisation.installation_report}}">Download Report</a></p>
                     {% endif %}
                     
                 </div>
@@ -145,7 +147,7 @@
                     <p class="DTS"><strong>ISM OFFICER: </strong> {{nasorganisation.ISM_officer}} </p>
                     <p class="DTS"><strong>ISM REPORT AVAILABLE: </strong> {{nasorganisation.ISM_report_available}} </p>
                     {% if nasorganisation.ISM_report %}
-                    <p class="DTS"><strong>ISM REPORT: </strong> <a href = "{{nasorganisation.ISM_report.url}}">Download Report</a> </p>
+                    <p class="DTS"><strong>ISM REPORT: </strong> <a href = "{{nasorganisation.ISM_report.url}}" target="_blank">Download Report</a> </p>
                     {% endif %}
                     
                     <p class="DTS"><strong>PLANNING OF TRAINING PROGRAMME: </strong> {{nasorganisation.planning_of_Training_Programme}} </p>

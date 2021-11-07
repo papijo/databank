@@ -12,8 +12,10 @@ class StaffBioForm(ModelForm):
         model = StaffBio
         fields = '__all__'
         widgets = {
-            'DOB': DateInput(),
-            'DOE': DateInput(),
+            'date_of_Birth': DateInput(),
+            'date_of_Employment': DateInput(),
             'leave_Start': DateInput(),
             'leave_End': DateInput(),
+            'date_of_Last_Promotion': DateInput(),
+            'date_of_next_Promotion': DateInput(),
         }

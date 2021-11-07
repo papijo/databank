@@ -7,11 +7,11 @@ class OrganisationFilter(django_filters.FilterSet):
 
     class Meta:
         model = NasOrganisation
-        fields = ['name', 'sector', 'state']
+        fields = ['name', 'sector', 'state', 'trade_Area']
 
 class OrganisationFilterCount(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr= 'icontains')
 
     class Meta:
         model = NasOrganisation
-        fields = ['name', 'sector', 'state']
+        fields = ['name', 'sector', 'state', 'trade_Area']

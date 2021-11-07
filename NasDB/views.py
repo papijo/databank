@@ -1,5 +1,6 @@
+from django.db.models.base import Model
 from django.shortcuts import render
-from NasDB.models import Type, State, NasOrganisation, Sector
+from NasDB.models import Type, State, NasOrganisation, Sector, InstructionalStaff, ApprencticeTrainee
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -7,7 +8,7 @@ from django.contrib.auth.decorators import permission_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .filters import OrganisationFilter, OrganisationFilterCount
-from NasDB.forms import NasOrganisationForm
+from NasDB.forms import NasOrganisationForm, InstructionalStaffForm
 
 
 
@@ -49,6 +50,7 @@ from NasDB.forms import NasOrganisationForm
 #     permission_required = 'NasDB.change_nasorganisation'
 
 
+#NAS-Organisation
 @permission_required('NasDB.change_nasorganisation')
 def nasorganisation_listview(request):
     context = {}
@@ -67,8 +69,6 @@ class NasOrganisationCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'NasDB.add_nasorganisation'
     raise_exception = False
     
-    
-
 class NasOrganisationUpdate(PermissionRequiredMixin, UpdateView):
     model = NasOrganisation
     fields = '__all__'
@@ -78,6 +78,56 @@ class NasOrganisationDelete(PermissionRequiredMixin, DeleteView):
     model = NasOrganisation
     success_url = reverse_lazy('nas-organisations')
     permission_required = 'NasDB.delete_nasorganisation'
+
+
+#Instructional Staff
+class InstructionalStaffListView(PermissionRequiredMixin, generic.ListView):
+    model = InstructionalStaff
+    permission_required = 'NasDB.change_nasorganisation'
+
+class InstructionalStaffDetailView(PermissionRequiredMixin, generic.DetailView):
+    model = InstructionalStaff
+    permission_required = 'NasDB.change_nasorganisation'
+
+class InstructionalStaffCreate(PermissionRequiredMixin, CreateView):
+    model = InstructionalStaff
+    #fields = '__all__'
+    permission_required = 'NasDB.change_nasorganisation'
+    form_class = InstructionalStaffForm
+
+class InstructionalStaffUpdate(PermissionRequiredMixin, UpdateView):
+    model = InstructionalStaff
+    fields = '__all__'
+    permission_required = 'NasDB.change_nasorganisation'
+
+class InstructionalStaffDelete(PermissionRequiredMixin, DeleteView):
+    model = InstructionalStaff
+    success_url = reverse_lazy('instructional-staff')
+    permission_required = 'NasDB.change_nasorganisation'
+
+#Apprentice Trainee
+class ApprenticeTraineeListView(PermissionRequiredMixin, generic.ListView):
+    model = ApprencticeTrainee
+    permission_required = 'NasDB.change_nasorganisation'
+
+class ApprenticeTraineeDetailView(PermissionRequiredMixin, generic.DetailView):
+    model = ApprencticeTrainee
+    permission_required = 'NasDB.change_nasorganisation'
+
+class ApprenticeTraineeCreate(PermissionRequiredMixin, CreateView):
+    model = ApprencticeTrainee
+    fields = '__all__'
+    permission_required = 'NasDB.change_nasorganisation'
+
+class ApprenticeTraineeUpdate(PermissionRequiredMixin, UpdateView):
+    model = ApprencticeTrainee
+    fields = '__all__'
+    permission_required = 'NasDB.change_nasorganisation'
+
+class ApprenticeTraineeDelete(PermissionRequiredMixin, DeleteView):
+    model = ApprencticeTrainee
+    success_url = reverse_lazy('apprentice-trainee')
+    permission_required = 'NasDB.change_nasorganisation'
 
 
 @permission_required('NasDB.change_nasorganisation')

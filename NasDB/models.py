@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.fields.related import ForeignKey
+from django.db.models.fields.related import ForeignKey, ManyToManyField
 from django.urls import reverse #Used to generate URLS by reversing the URL Patterns
 from django.db.models.fields.files import ImageField
 from PIL import Image
@@ -127,6 +127,7 @@ class NasOrganisation(models.Model):
     state = models.ForeignKey('State', on_delete=models.SET_NULL, null=True)
     sector = models.ForeignKey('Sector', on_delete=models.SET_NULL, null=True)
     sub_Sector = models.CharField(max_length=200)
+    trade_Area = ManyToManyField('TradeArea')
     type = models.ForeignKey('Type', on_delete=models.SET_NULL, null=True)
     YOE = models.DateField(auto_now= False)
     staff_Strength_Permanent = models.IntegerField(blank=True) 
@@ -470,6 +471,9 @@ class InstructionalStaff(models.Model):
         date1 = now - self.doe
         date2 = int((date1).days / 365.2425)
         return date2
+    
+    def get_absolute_url(self):
+        return reverse("instructional_staff-detail", kwargs={"pk": self.id})
 
 class ApprencticeTrainee(models.Model):
     name = models.CharField(max_length=200)
@@ -485,6 +489,9 @@ class ApprencticeTrainee(models.Model):
         date1 = now - self.doe
         date2 = int((date1).days / 365.2425)
         return date2
+    
+    def get_absolute_url(self):
+        return reverse("apprentice_trainee-detail", kwargs={"pk": self.id})
 
 
     

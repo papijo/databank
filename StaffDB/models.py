@@ -21,6 +21,8 @@ class State(models.Model):
 	def get_absolute_url(self):
 		return reverse("staff_by_state", args= [self.slug])
 	
+	def  __str__(self):	
+		return self.name
 
 class Division(models.Model):
 

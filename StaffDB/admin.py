@@ -30,6 +30,11 @@ class DivisionAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
 
+@admin.register(State)
+class StateAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}
+    
 # @admin.register(AnnualLeave)
 # class AnnualLeaveAdmin(admin.ModelAdmin):
 #     list_display = ['name', 'slug']

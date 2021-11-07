@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h1 class="m-0 font-weight-bold text-center">List of Instructional Staff under the National Apprenticeship Scheme </h1>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th class="h4 font-weight-bold">S/N</th>
+                        <th class="h4 font-weight-bold">Name</th>
+                        <th class="h4 font-weight-bold">Organisation</th>
+                        <th class="h4 font-weight-bold">Trade Area</th>
+                        
+                    </tr>
+                  </thead>
+                  <tfoot>
+                  
+                    <tr>
+                        <th class="h4 font-weight-bold">S/N</th>
+                        <th class="h4 font-weight-bold">Name</th>
+                        <th class="h4 font-weight-bold">Organisation</th>
+                        <th class="h4 font-weight-bold">Trade Area</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                  {% if instructionalstaff_list %}
+                        {%for is in instructionalstaff_list%}
+                    
+                    <tr>
+                      <td class="h4"><a href = "{{is.get_absolute_url}}"> {{is.id}} </a></td>
+                      <td class="h4"><a href = "{{is.get_absolute_url}}"> {{is.name}} </a></td>
+                      <td class="h4"> {{is.organisation}} </td>
+                      <td class="h4"> {{is.state}}</td>
+                      
+                    </tr>
+                    {%endfor%}
+                      {%endif%}
+                    
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+
+{% endblock content %}
